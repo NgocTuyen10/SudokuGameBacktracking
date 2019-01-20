@@ -7,7 +7,6 @@ public class MasterMind {
 	private static int QUIZZ_LENGTH = 4;
 	private static char allCorrect = '*';
 	private static char numberCorrect = '!';
-//	private Answers ans;
 
 	public enum State {
 		PROGRESS, LOST, WIN
@@ -47,8 +46,6 @@ public class MasterMind {
 
 	private String generateHiddenNumber() {
 		Random rand = new Random();
-		// To test
-		// System.out.println(String.format("%04d", rand.nextInt(10000)));
 		return String.format("%04d", rand.nextInt(10000));
 	}
 
@@ -67,6 +64,7 @@ public class MasterMind {
 	}
 
 	private void changeGameStatus(Answers paraAttmpt) {
+		// attemptList.size() < maxAllowTime
 		if (attemptList.size() < maxAllowTime) {
 			if (paraAttmpt.getResult().equals(correctAnswer))
 				gameState = State.WIN;

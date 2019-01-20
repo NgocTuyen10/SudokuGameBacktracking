@@ -10,11 +10,10 @@ public class MasterMindGame {
 		MasterMind mGame = new MasterMind();
 		displayScreen();
 		System.out.println(mGame.getHiddenNumber());
-		// mGame.getHiddenNumber();
 		while (mGame.isProgress()) {
 			System.out.print("Enter Your Guess : ");
-			Answers ans = new Answers(acceptNumber().toString());
-			mGame.evaluateResult(ans);
+			// Answers ans = new Answers(acceptNumber().toString());
+			mGame.evaluateResult(new Answers(acceptNumber()));
 			// E ;
 			System.out.print(mGame.getResult() + "\n");
 		}
