@@ -41,44 +41,21 @@ public class SudokuModel {
 
 	public boolean check(int v, int r, int c) {
 
-//		if (isRowClash(v, r))
-//			return false;
-//
-//		if (isColumnClash(v, c))
-//			return false;
-//
-//		if (isBoxClash(v, r, c))
-//			return false;
+		if (isRowClash(v, r))
+			return false;
 
-		return !(isColumnClash(v, c) || isRowClash(v, r) || isBoxClash(v, r, c));
+		if (isColumnClash(v, c))
+			return false;
+
+		if (isBoxClash(v, r, c))
+			return false;
+
+		// return !(isColumnClash(v, c) || isRowClash(v, r) || isBoxClash(v, r, c));
+		return true;
 	}
 
-//	public void tryValue(int r, int c) {
-//
-//		int v;
-//		if (c > 8) {
-//			r++;
-//			c = c % 8;
-//		}
-//
-//		if (x[r][c] == 0) {
-//			for (v = 1; v <= 9; v++) {
-//				if (check(v, r, c)) {
-//					x[r][c] = v;
-//					if (r == 8 & c == 8)
-//						printSolution();
-//				} else
-//					tryValue(r, c + 1);
-//			}
-//		} else {
-//			tryValue(r, c + 1);
-//		}
-//
-//	}
 	public void tryValue(int r, int c) {
 
-//		for (int row = 0; row < 9; row++) {
-//			for (int col = 0; col < 9; col++) {
 		if (c == 9) {
 			r += 1;
 			c %= 9;
@@ -90,17 +67,14 @@ public class SudokuModel {
 					if (r == 8 & c == 8) {
 						printSolution();
 					} else {
-
 						tryValue(r, c + 1);
 					}
 					x[r][c] = 0;
 				}
 			}
-			// return false;
 		} else {
 			tryValue(r, c + 1);
 		}
-
 	}
 
 	public void printSolution() {
